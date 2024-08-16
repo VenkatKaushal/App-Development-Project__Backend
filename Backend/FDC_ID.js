@@ -1,5 +1,6 @@
 const food = {
-    apple: 2343830,
+    apple: 2344711,
+    dosa: 2343830,
 
 };
 
