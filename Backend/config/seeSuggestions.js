@@ -206,5 +206,5 @@ async function seedDatabase() {
     } catch (err) {
         console.error('Error seeding database:', err);
     }
-
+}
 seedDatabase();
