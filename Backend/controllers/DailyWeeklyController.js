@@ -1,5 +1,5 @@
 const { aggregateNutrients } = require('./nutrientController');
-const User = require('../models/Users'); // Ensure you import your User model
+const User = require('../models/Users');
 
 exports.updateDailyNutrients = async (userId, foodItems) => {
     try {
@@ -9,11 +9,7 @@ exports.updateDailyNutrients = async (userId, foodItems) => {
         if (!user) {
             throw new Error('User not found');
         }
-
-        // Make a copy of nutrientAggregation for weekly updates
         const weeklyNutrientAggregation = { ...nutrientAggregation };
-
-        // Update daily nutrients
         user.dailyNutrients = user.dailyNutrients.map(nutrient => {
             const dailyNutrient = nutrientAggregation[nutrient.name];
             if (dailyNutrient) {
@@ -30,8 +26,6 @@ exports.updateDailyNutrients = async (userId, foodItems) => {
                 unit: nutrientAggregation[key].unit
             });
         });
-
-        // Update weekly nutrients
         user.weeklyNutrients = user.weeklyNutrients.map(nutrient => {
             const weeklyNutrient = weeklyNutrientAggregation[nutrient.name];
             if (weeklyNutrient) {
@@ -58,8 +52,6 @@ exports.updateDailyNutrients = async (userId, foodItems) => {
         throw error;
     }
 };
-
-// Function to get daily nutrient intake
 exports.getDailyNutrientIntake = async (req, res) => {
     try {
         const user = await User.findById(req.user.id);
@@ -73,7 +65,6 @@ exports.getDailyNutrientIntake = async (req, res) => {
     }
 };
 
-// Function to get weekly nutrient intake
 exports.getWeeklyNutrientIntake = async (req, res) => {
     try {
         const user = await User.findById(req.user.id);
@@ -86,8 +77,6 @@ exports.getWeeklyNutrientIntake = async (req, res) => {
         res.status(500).json({ message: 'Server Error' });
     }
 };
-
-// Function to calculate daily nutrients
 exports.calculateDailyNutrients = async (req, res) => {
     const { foodItems } = req.body;
 

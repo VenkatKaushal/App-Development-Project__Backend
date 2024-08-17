@@ -4,8 +4,10 @@ const dotenv = require('dotenv');
 const auth = require('./routes/auth');
 const nutrientRouters = require('./routes/nutrientRouter');
 const foodRoutes = require('./routes/foodRouter');
+const suggestionsRouter = require('./routes/suggestionRoute'); 
+const errorMiddleware = require('./middleware/error');
 
-const dailyWeekly = require('./routes/dailyWeekly'); // Path to your router file
+const dailyWeekly = require('./routes/dailyWeekly');
 const resetWeeklyNutrients = require('./middleware/resetWeeklyNutrients');
 
 dotenv.config();
@@ -23,6 +25,7 @@ app.use('/api/auth', auth);
 app.use('/api/nutrients', nutrientRouters); 
 app.use('/api/food', foodRoutes); 
 app.use('/api', dailyWeekly);
+app.use('/api/nutrients', suggestionsRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
