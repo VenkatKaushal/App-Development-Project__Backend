@@ -20,9 +20,9 @@ const aggregateNutrients = async (foodItems) => {
 
             const nutrients = response.data.foodNutrients || [];
             nutrients.forEach(nutrient => {
-                const name = nutrient.nutrient.name; // Adjust based on API response
+                const name = nutrient.nutrient.name; 
                 const amount = nutrient.amount;
-                const unit = nutrient.nutrient.unitName; // Adjust based on API response
+                const unit = nutrient.nutrient.unitName; 
 
                 if (!name) {
                     console.warn('Nutrient name is missing or undefined');
