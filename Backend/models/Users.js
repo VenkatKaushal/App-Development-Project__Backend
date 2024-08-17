@@ -24,6 +24,12 @@ const ProfileSchema = new mongoose.Schema({
 
 });
 
+const NutrientSchema = new mongoose.Schema({
+    name: String,
+    amount: Number,
+    unit: String,
+});
+
 const UserSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -47,6 +53,18 @@ const UserSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    dailyNutrients: { 
+        type: [NutrientSchema], 
+        default: [] 
+    },
+    weeklyNutrients: { 
+        type: [NutrientSchema], 
+        default: [] 
+    },
+    lastUpdated: { 
+        type: Date, 
+        default: Date.now 
+    }
 });
 
 
