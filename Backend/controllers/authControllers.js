@@ -20,7 +20,7 @@ exports.registerUser = async (req, res) => {
         jwt.sign(
             payload,
             process.env.JWT_SECRET,
-            { expiresIn: '5h' },
+            { expiresIn: '24h' },
             (err, token) => {
                 if (err) {
                     console.error('Error generating token:', err.message);
@@ -36,6 +36,46 @@ exports.registerUser = async (req, res) => {
         res.status(500).send("Server Error");
     }
 };
+
+exports.updateProfile = async (req, res) => {
+    try {
+        console.log("Uploading ProfilePhoto");
+        const user = await User.findById(req.user.id);
+        if(!user) {
+            return res.status(404).json({msg: 'User not found'});
+        }
+        
+        const {username, email, password, profilePicture, age, gender, height, weight} = req.body;
+
+        if (username) user.username = username;
+        if (email) user.email = email;
+        if (password) user.password = password;
+        if(req.file){
+            user.profile.profilePicture = req.file.path;
+        }
+        if (user.profile){
+            user.profile.age = age != undefined ? age : user.profile.age;
+            user.profile.gender = gender || user.profile.gender;
+            user.profile.height = height != undefined ? height : user.profile.height;
+            user.profile.weight = weight != undefined ? weight : user.profile.weight;
+        } else {
+            user.profile = {
+                profilePicture,
+                age,
+                gender,
+                height,
+                weight
+            };
+        }
+        
+        await user.save();
+
+        res.json(user);
+    } catch(error) {
+        console.error('Error updating profile: ', error.message);
+        res.status(500).send('Server Error');
+    }
+}
 
 exports.loginUser = async (req, res) => {
     const { email, password } = req.body;

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getAggregatedNutrients } = require('../controllers/foodController');
+const { getAggregatedNutrients } = require('../controllers/nutrientController');
 
 router.post('/aggregate-nutrients', getAggregatedNutrients);
 
