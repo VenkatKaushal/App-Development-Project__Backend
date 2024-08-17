@@ -1,8 +1,16 @@
 const mongoose = require('mongoose');
 
-const NutritionalRequirementsSchema  = new mongoose.Schema({
+const NutritionalRequirementsSchema = new mongoose.Schema({
     ageGroup: {
         type: String,
+        enum: [
+            '1-3 years',
+            '4-8 years',
+            '9-13 years',
+            '14-18 years',
+            '19-50 years',
+            '51+ years'
+        ],
         required: true,
     },
     gender: {
