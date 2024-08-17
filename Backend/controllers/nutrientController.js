@@ -64,3 +64,5 @@ exports.getAggregatedNutrients = async (req, res) => {
         res.status(500).json({ message: 'Failed to aggregate nutrient data' });
     }
 };
+
+exports.aggregateNutrients = aggregateNutrients;

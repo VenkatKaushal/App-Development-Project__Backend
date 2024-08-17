@@ -3,7 +3,7 @@ const { FDC_API_KEY, FDC_BASE_URL } = require('../config/food_data');
 const foodData = require('../FDC_ID');
 
 exports.getNutrientInformation = async (req, res) => {
-    const foodItem = req.params.name; // Correctly access the route parameter
+    const foodItem = req.params.name;
     const fdcId = foodData[foodItem];
 
     if (!fdcId) {
