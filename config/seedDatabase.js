@@ -326,10 +326,7 @@ async function seedDatabase() {
     try {
         console.log("Enter Seeding");
         const mongoURI = 'mongodb://mongo_db:27017/LoginAuthentication'; 
-        await mongoose.connect(mongoURI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
+        await mongoose.connect(mongoURI);
 
         console.log('MongoDB connection was successful.');
         for (const suggestion of suggestions) {
