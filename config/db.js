@@ -1,11 +1,17 @@
 const mongoose = require('mongoose');
 
+const dbURI = process.env.DB_URI;
+
 const connectDB = async () => {
     try {
-        await mongoose.connect("mongodb://localhost:27017/LoginAuthentication");
-        console.log('MongoDB connection was Successfull.');
-    } catch(err) {
-        console.error(err.message);
+        console.log('Connecting to MongoDB with URI:', dbURI);
+        await mongoose.connect(dbURI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+        console.log('MongoDB connection was successful.');
+    } catch (err) {
+        console.error('Error connecting to MongoDB:', err.message);
         process.exit(1);
     }
 };
