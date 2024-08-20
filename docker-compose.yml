@@ -13,7 +13,7 @@ services:
     build: .
     container_name: my_app
     environment:
-      DB_URI: mongodb+srv://rr200024:OQ0PKjxnEiTRKc3s@nutriguidecluster.d3gmf.mongodb.net/
+      DB_URI: mongodb+srv://rr200024:<password>@nutriguidecluster.d3gmf.mongodb.net/?retryWrites=true&w=majority&appName=NutriGuideCluster
       JWT_SECRET: f5ef07ced83d13947ed88174da9004f4f0e1235a894bdbecc6a7ab8e6ddd5ea2fa929bcca5cf004714cdb284553804c6ef2591e428797d3b3adb95033bde1e6d
       FDC_API_KEY: hd7gpVnbSsuqTsfsEkqmNsgkHboftBAn0qOREL5w
     ports:
