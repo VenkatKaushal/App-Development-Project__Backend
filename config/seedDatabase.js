@@ -325,7 +325,7 @@ async function seedDatabase() {
     
     try {
         console.log("Enter Seeding");
-        const mongoURI = 'mongodb://mongo_db:27017/LoginAuthentication'; 
+        const mongoURI = 'mongodb+srv://rr200024:OQ0PKjxnEiTRKc3s@nutriguidecluster.d3gmf.mongodb.net/?retryWrites=true&w=majority&appName=NutriGuideCluster'; 
         await mongoose.connect(mongoURI);
 
         console.log('MongoDB connection was successful.');
