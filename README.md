@@ -3,7 +3,8 @@
 #UG-3 Team-4
 # README
 
-The updated APK is uploaded in Front-End Github Repo as well as in this repo....
+The updated APK is uploaded in Front-End Github Repo as well as in Back-End GitHub repo....
+Name of APK is NutriGuide.apk
 
 Login Screen:
 
